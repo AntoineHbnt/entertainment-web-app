@@ -1,5 +1,5 @@
 import * as React from "react";
-import styled from "styled-components";
+import { styled } from "stitches.config";
 
 export enum HeadingSize {
   Large = "large",
@@ -33,14 +33,14 @@ export function Heading(props: HeadingProps) {
   } = props;
 
   const sizeChoose = {
-    [HeadingSize.Large]: "2rem",
-    [HeadingSize.Medium]: "1.5rem",
-    [HeadingSize.Small]: "1.25rem",
+    [HeadingSize.Large]: "$32",
+    [HeadingSize.Medium]: "$24",
+    [HeadingSize.Small]: "$18",
   };
 
   const weightChoose = {
-    [HeadingWeight.Light]: "300",
-    [HeadingWeight.Medium]: "500",
+    [HeadingWeight.Light]: "$light",
+    [HeadingWeight.Medium]: "$medium",
   };
 
   const colorChoose = {
@@ -48,13 +48,13 @@ export function Heading(props: HeadingProps) {
     [HeadingColor.Secondary]: "50%",
   };
 
-  const StyledHeading = styled.h1`
-    font-family: ${({ theme }) => theme.main.fontFamily};
-    font-size: ${sizeChoose[size]};
-    font-weight: ${weightChoose[weight]};
-    color: ${({ theme }) => theme.main.pureWhite};
-    opacity: ${colorChoose[color]};
-  `;
+  const StyledHeading = styled("h1", {
+    fontFamily: "$outfit",
+    fontSize: `${sizeChoose[size]}`,
+    fontWeight: `${weightChoose[weight]}`,
+    color: "$pureWhite",
+    opacity: `${colorChoose[color]}`,
+  });
 
   return <StyledHeading>{children}</StyledHeading>;
 }

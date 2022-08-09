@@ -1,5 +1,5 @@
 import * as React from "react";
-import styled from "styled-components";
+import { styled } from "stitches.config";
 
 export enum BodySize {
   Medium = "medium",
@@ -15,15 +15,15 @@ export function Body(props: BodyProps) {
   const { size = BodySize.Medium, children } = props;
 
   const sizeChoose = {
-    [BodySize.Medium]: "0.9375rem",
-    [BodySize.Small]: "0.8125rem",
+    [BodySize.Medium]: "$15",
+    [BodySize.Small]: "$13",
   };
 
-  const StyledBody = styled.p`
-    font-family: ${({ theme }) => theme.main.fontFamily};
-    color: ${({ theme }) => theme.main.pureWhite};
-    font-size: ${sizeChoose[size]};
-  `;
+  const StyledBody = styled("p", {
+    fontFamily: "$outfit",
+    color: "$pureWhite",
+    fontSize: `${sizeChoose[size]}`,
+  })
 
   return <StyledBody>{children}</StyledBody>;
 }
