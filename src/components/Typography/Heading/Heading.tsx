@@ -49,10 +49,11 @@ export function Heading(props: HeadingProps) {
   };
 
   const StyledHeading = styled.h1`
-    color: ${({ theme }) => theme.main.pureWhite};
-    opacity: ${colorChoose[color]};
+    font-family: ${({ theme }) => theme.main.fontFamily};
     font-size: ${sizeChoose[size]};
     font-weight: ${weightChoose[weight]};
+    color: ${({ theme }) => theme.main.pureWhite};
+    opacity: ${colorChoose[color]};
   `;
 
   return <StyledHeading>{children}</StyledHeading>;
