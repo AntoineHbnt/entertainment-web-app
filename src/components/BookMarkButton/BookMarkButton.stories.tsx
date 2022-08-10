@@ -2,8 +2,11 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { BookMarkButton } from "./BookMarkButton";
 
 export default {
-  title: "component/BookMarkButton",
+  title: "atoms/BookMarkButton",
   component: BookMarkButton,
+  parameters: {
+    backgrounds: { default: 'light' },
+  },
   argTypes: {
     defaultState: {
       defaultValue: true,

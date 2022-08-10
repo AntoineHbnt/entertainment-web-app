@@ -9,7 +9,14 @@ export const {styled, css} = createStitches({
       greyishBlue: "#5A698F",
       semiDarkBlue: "#161d2f",
     },
-    space: {},
+    space: {
+      32: "2rem",
+      24: "1.5rem",
+      18: "1.25rem",
+      16: "1rem",
+      15: "0.9375rem",
+      13: "0.8125rem",
+    },
     fontSizes: {
       32: "2rem",
       24: "1.5rem",

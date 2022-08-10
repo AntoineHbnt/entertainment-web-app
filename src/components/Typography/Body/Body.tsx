@@ -22,6 +22,7 @@ export function Body(props: BodyProps) {
   const StyledBody = styled("p", {
     fontFamily: "$outfit",
     color: "$pureWhite",
+    fontWeight: "$light",
     fontSize: `${sizeChoose[size]}`,
   })
 
