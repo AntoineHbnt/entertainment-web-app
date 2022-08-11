@@ -1,6 +1,6 @@
 import { createStitches } from "@stitches/react";
 
-export const {styled, css} = createStitches({
+export const { styled, css } = createStitches({
   theme: {
     colors: {
       red: "#FC4747",
@@ -34,10 +34,24 @@ export const {styled, css} = createStitches({
     },
     lineHeights: {},
     letterSpacings: {},
-    sizes: {},
+    sizes: {
+      regularCardWidthSmall: "164px",
+      regularCardHeightSmall: "110px",
+      regularCardWidthMedium: "220px",
+      regularCardHeightMedium: "140px",
+      regularCardWidthLarge: "280px",
+      regularCardHeightLarge: "174px",
+
+      trendingCardWidthSmall: "240px",
+      trendingCardHeightSmall: "140px",
+      trendingCardWidthLarge: "470px",
+      trendingCardHeightLarge: "230px",
+    },
     borderWidths: {},
     borderStyles: {},
-    radii: {},
+    radii: {
+      cardBorderRadius: "8px",
+    },
     shadows: {},
     zIndices: {},
     transitions: {},
