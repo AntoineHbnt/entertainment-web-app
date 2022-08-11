@@ -1,5 +1,4 @@
-import { theme } from "../src/App"
-import "../src/index.css"
+import "../src/index.css";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -13,8 +12,7 @@ export const parameters = {
     default: "dark",
     values: [
       { name: "dark", value: "#10141E" },
-    ]
-  }
-}
-
-const themes = [theme]
+      { name: "light", value: "#FFF" },
+    ],
+  },
+};

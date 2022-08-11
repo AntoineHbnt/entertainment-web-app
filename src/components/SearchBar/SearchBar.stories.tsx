@@ -13,9 +13,7 @@ export default {
 } as ComponentMeta<typeof SearchBar>;
 
 const Template: ComponentStory<typeof SearchBar> = (args) => (
-  <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-    <SearchBar {...args}>SearchBar</SearchBar>
-  </div>
+  <SearchBar {...args}>SearchBar</SearchBar>
 );
 
 export const Primary = Template.bind({});
