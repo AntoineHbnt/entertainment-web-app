@@ -19,7 +19,19 @@ export function BookMarkButton(props: BookMarkButtonProps) {
         background: "$darkBlue",
         cursor: "pointer",
         opacity: "50%",
-        transition: "all .1s ease-in-out",
+
+        "&:hover": {
+            background: "$pureWhite",
+            opacity: "100%",
+            "& > svg.full > path": {
+                fill: "$darkBlue",
+                transition: "fill 0.2s ease-in-out",
+            },
+            "& > svg.empty > path": {
+                stroke: "$darkBlue",
+                transition: "fill 0.2s ease-in-out",
+            }
+        }
     })
 
     const handleClick = (event: React.MouseEvent) => {
@@ -29,7 +41,7 @@ export function BookMarkButton(props: BookMarkButtonProps) {
 
     return (
         <Button onClick={handleClick}>
-            {state ? <BookMarkIcon /> : <EmptyBookMarkIcon />}
+            {state ? <BookMarkIcon className='full' /> : <EmptyBookMarkIcon className='empty' />}
         </Button>
     )
 }
