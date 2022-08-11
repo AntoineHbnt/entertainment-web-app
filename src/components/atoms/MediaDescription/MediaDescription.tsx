@@ -7,7 +7,7 @@ import {
 } from "components/Typography/Heading/Heading";
 import { styled } from "stitches.config";
 import { Media } from "utils/dataTypes";
-import { CardSize, CardType } from "components/MediaCard/MediaCard";
+import { CardType } from "components/MediaCard/MediaCard";
 
 export interface MediaDescriptionProps {
   media: Media;
