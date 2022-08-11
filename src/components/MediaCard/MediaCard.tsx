@@ -1,7 +1,7 @@
 import { BookMarkButton } from "components/atoms/BookMarkButton/BookMarkButton";
 import { MediaDescription } from "components/atoms/MediaDescription/MediaDescription";
 import { styled } from "stitches.config";
-import { Media } from "utils/dataTypes";
+import { defaultMedia, Media } from "utils/dataTypes";
 
 export enum CardType {
   Trending = "trending",
@@ -14,16 +14,16 @@ export enum CardSize {
   Large = "large",
 }
 
-interface MediaCardProps {
+export interface MediaCardProps {
   media: Media;
   type: CardType;
   size: CardSize;
 }
 
 export function MediaCard(props: MediaCardProps) {
-  const { type, size, media } = props;
+  const { type = CardType.Regular, size = CardSize.Medium, media = defaultMedia } = props;
   const { isBookmarked, thumbnail } = media;
-  const { trending, regular } = thumbnail;
+  const { trending, regular } = thumbnail;  
 
   const chooseType = {
     [CardType.Trending]: "trending",
