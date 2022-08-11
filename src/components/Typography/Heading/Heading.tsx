@@ -32,28 +32,38 @@ export function Heading(props: HeadingProps) {
     children,
   } = props;
 
-  const sizeChoose = {
+  const chooseSizeLargeScreen = {
     [HeadingSize.Large]: "$32",
     [HeadingSize.Medium]: "$24",
     [HeadingSize.Small]: "$18",
   };
 
-  const weightChoose = {
+  const chooseSizeMobile = {
+    [HeadingSize.Large]: "$20",
+    [HeadingSize.Medium]: "$15",
+    [HeadingSize.Small]: "$14",
+  }
+
+  const chooseWeight = {
     [HeadingWeight.Light]: "$light",
     [HeadingWeight.Medium]: "$medium",
   };
 
-  const colorChoose = {
+  const chooseColor = {
     [HeadingColor.Primary]: "100%",
     [HeadingColor.Secondary]: "50%",
   };
 
   const StyledHeading = styled("h1", {
     fontFamily: "$outfit",
-    fontSize: `${sizeChoose[size]}`,
-    fontWeight: `${weightChoose[weight]}`,
+    fontSize: `${chooseSizeMobile[size]}`,
+    fontWeight: `${chooseWeight[weight]}`,
     color: "$pureWhite",
-    opacity: `${colorChoose[color]}`,
+    opacity: `${chooseColor[color]}`,
+
+    "@tablet": {
+      fontSize: `${chooseSizeLargeScreen[size]}`,
+    }
   });
 
   return <StyledHeading>{children}</StyledHeading>;

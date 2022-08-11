@@ -1,7 +1,12 @@
 import * as React from "react";
 import { ReactComponent as PlayIcon } from "assets/icon-play.svg";
 import { styled } from "stitches.config";
-import { Heading, HeadingSize, HeadingWeight } from "components/Typography/Heading/Heading";
+import {
+  Heading,
+  HeadingSize,
+  HeadingWeight,
+} from "components/Typography/Heading/Heading";
+import "animate.css";
 
 export function PlayButton() {
   const Container = styled("div", {
@@ -10,7 +15,8 @@ export function PlayButton() {
     justifyContent: "center",
     width: "100%",
     height: "100%",
-    backgroundColor: "rgba(255,255,255,0.5)",
+    backgroundColor: "rgba(0,0,0,0.5)",
+    animation: "fadeIn 0.2s ease-in",
   });
 
   const Button = styled("button", {
@@ -23,13 +29,24 @@ export function PlayButton() {
     height: "48px",
     borderRadius: "28.5px",
     backgroundColor: "rgba(255,255,255,0.25)",
+    cursor: "pointer",
+    transition: "transform .1s ease-in-out",
+    animation: "fadeInDown .2s ease-in-out",
+    fontFamily: "$outfit",
+    fontSize: "$18",
+    fontWeight: "$medium",
+    color: "$pureWhite",
+
+    "&:hover": {
+      transform: "scale(1.05)",
+    },
   });
 
   return (
     <Container>
       <Button>
         <PlayIcon fill="$pureWhite" />
-        <Heading size={HeadingSize.Small} weight={HeadingWeight.Medium}>Play</Heading>
+        Play
       </Button>
     </Container>
   );

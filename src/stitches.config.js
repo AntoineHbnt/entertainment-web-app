@@ -23,7 +23,10 @@ export const { styled, css } = createStitches({
       18: "1.25rem",
       16: "1rem",
       15: "0.9375rem",
+      14: "0.875rem",
       13: "0.8125rem",
+      12: "0.75rem",
+      11: "0.6875rem",
     },
     fonts: {
       outfit: "Outfit, sans-serif",
@@ -35,11 +38,9 @@ export const { styled, css } = createStitches({
     lineHeights: {},
     letterSpacings: {},
     sizes: {
-      regularCardWidthSmall: "164px",
+      regularCardWidt: "100%",
       regularCardHeightSmall: "110px",
-      regularCardWidthMedium: "220px",
       regularCardHeightMedium: "140px",
-      regularCardWidthLarge: "280px",
       regularCardHeightLarge: "174px",
 
       trendingCardWidthSmall: "240px",
@@ -55,5 +56,10 @@ export const { styled, css } = createStitches({
     shadows: {},
     zIndices: {},
     transitions: {},
+  },
+  media: {
+    tablet: '(min-width: 481px)',
+    smallScreen: '(min-width: 769px)',
+    largeScreen: '(min-width: 1025px)',
   },
 });

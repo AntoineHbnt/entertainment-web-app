@@ -10,11 +10,6 @@ export default {
       defaultValue: "trending",
       control: "select"
     },
-    size: {
-      options: ["small", "medium", "large"],
-      defaultValue: "small",
-      control: "select"
-    },
     media: {
       defaultValue: {
         title: "Beyond Earth",

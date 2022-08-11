@@ -1,5 +1,6 @@
 import { BookMarkButton } from "components/atoms/BookMarkButton/BookMarkButton";
 import { MediaDescription } from "components/atoms/MediaDescription/MediaDescription";
+import { PlayButton } from "components/atoms/PlayButton/PlayButton";
 import { styled } from "stitches.config";
 import { defaultMedia, Media } from "utils/dataTypes";
 
@@ -17,13 +18,15 @@ export enum CardSize {
 export interface MediaCardProps {
   media: Media;
   type: CardType;
-  size: CardSize;
 }
 
 export function MediaCard(props: MediaCardProps) {
-  const { type = CardType.Regular, size = CardSize.Medium, media = defaultMedia } = props;
+  const {
+    type = CardType.Regular,
+    media = defaultMedia,
+  } = props;
   const { isBookmarked, thumbnail } = media;
-  const { trending, regular } = thumbnail;  
+  const { trending, regular } = thumbnail;
 
   const chooseType = {
     [CardType.Trending]: "trending",
@@ -32,41 +35,52 @@ export function MediaCard(props: MediaCardProps) {
 
   const chooseParams = {
     [CardSize.Small]: {
-      width: `$${chooseType[type]}CardWidthSmall`,
-      height: `$${chooseType[type]}CardHeightSmall`,
       thumbnail: type === CardType.Trending ? trending.small : regular.small,
       bookmarkTop: "8px",
       bookmarkRight: "8px",
     },
     [CardSize.Medium]: {
-      width:
-        chooseType[type] === "trending"
-          ? "$trendingCardWidthLarge"
-          : `$${chooseType[type]}CardWidthMedium`,
-      height:
-        chooseType[type] === "trending"
-          ? "$trendingCardHeightLarge"
-          : `$${chooseType[type]}CardHeightMedium`,
       thumbnail: type === CardType.Trending ? trending.large : regular.medium,
       bookmarkTop: "16px",
       bookmarkRight: "16px",
     },
     [CardSize.Large]: {
-      width: `$${chooseType[type]}CardWidthLarge`,
-      height: `$${chooseType[type]}CardHeightLarge`,
       thumbnail: type === CardType.Trending ? trending.large : regular.large,
       bookmarkTop: "16px",
       bookmarkRight: chooseType[type] === "$trending" ? "24px" : "16px",
     },
   };
 
+
+
   const MediaCard = styled("div", {
     position: "relative",
-    width: chooseParams[size].width,
-    height: chooseParams[size].height,
+    width: type === CardType.Trending ? `$trendingCardWidthSmall` : `$regularCardWidth`,
+    height: type === CardType.Trending ? `$trendingCardHeightSmall` : `$regularCardHeightSmall`,
     borderRadius: "$cardBorderRadius",
     overflow: "hidden",
-    background: `url("${chooseParams[size].thumbnail}") center center / cover no-repeat`,
+    background: `url("${chooseParams[CardSize.Small].thumbnail}") center center / cover no-repeat`,
+
+    "&:hover": {
+      ".trending-description": {
+        display: "none",
+      },
+      ".playButton": {
+        display: "block",
+      },
+    },
+
+    "@tablet": {
+      width: type === CardType.Trending ? `$trendingCardWidthLarge` : `$regularCardWidth`,
+      height: type === CardType.Trending ? `$trendingCardHeightLarge` : `$regularCardHeightMedium`,
+      background: `url("${chooseParams[CardSize.Medium].thumbnail}") center center / cover no-repeat`,
+    },
+    "@smallScreen":{
+      width: type === CardType.Trending ? `$trendingCardWidthLarge` : `$regularCardWidth`,
+      height: type === CardType.Trending ? `$trendingCardHeightLarge` : `$regularCardHeightLarge`,
+      background: `url("${chooseParams[CardSize.Large].thumbnail}") center center / cover no-repeat`,
+    }
+
   });
 
   const TrendingDescription = styled("div", {
@@ -75,7 +89,12 @@ export function MediaCard(props: MediaCardProps) {
     width: "100%",
     background:
       "linear-gradient(180deg, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.75) 100%)",
-    padding: "24px",
+    padding: "16px",
+    animation: "fadeInUp .2s ease-in-out",
+
+    "@tablet": {
+      padding: "24px",
+    }
   });
 
   const RegularDescription = styled("div", {
@@ -84,8 +103,22 @@ export function MediaCard(props: MediaCardProps) {
 
   const BookMark = styled("div", {
     position: "absolute",
-    top: chooseParams[size].bookmarkTop,
-    right: chooseParams[size].bookmarkRight,
+    top: chooseParams[CardSize.Small].bookmarkTop,
+    right: chooseParams[CardSize.Small].bookmarkRight,
+
+    "@tablet": {
+      top: chooseParams[CardSize.Medium].bookmarkTop,
+      right: chooseParams[CardSize.Medium].bookmarkRight,
+    },
+    "@smallScreen":{
+      top: chooseParams[CardSize.Large].bookmarkTop,
+      right: chooseParams[CardSize.Large].bookmarkRight,
+    }
+  });
+
+  const PlayButtonContainer = styled("div", {
+    display: "none",
+    height: "100%",
   });
 
   return (
@@ -94,15 +127,18 @@ export function MediaCard(props: MediaCardProps) {
         <BookMark>
           <BookMarkButton defaultState={isBookmarked} />
         </BookMark>
+        <PlayButtonContainer className="playButton">
+          <PlayButton />
+        </PlayButtonContainer>
         {type === CardType.Trending && (
-          <TrendingDescription>
-            <MediaDescription media={media} type={type} size={size} />
+          <TrendingDescription className="trending-description">
+            <MediaDescription media={media} type={type} />
           </TrendingDescription>
         )}
       </MediaCard>
       {type === CardType.Regular && (
         <RegularDescription>
-          <MediaDescription media={media} type={type} size={size} />
+          <MediaDescription media={media} type={type} />
         </RegularDescription>
       )}
     </>
