@@ -129,7 +129,7 @@ export function MediaGrid(props: MediaGridProps) {
   return (
     <Container>
       <Header>
-        <Heading size={HeadingSize.Large}>{title}</Heading>
+        <Heading size={HeadingSize.Large} children={title}/>
         <ButtonContainer>
           <Button onClick={() => handleClick(Direction.Left)}>ᐸ</Button>
           <Button onClick={() => handleClick(Direction.Right)}>ᐳ</Button>
