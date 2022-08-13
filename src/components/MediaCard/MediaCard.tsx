@@ -33,7 +33,6 @@ export function MediaCard(props: MediaCardProps) {
     [CardType.Regular]: "regular",
   };
 
-
   const chooseParams = {
     [CardSize.Small]: {
       thumbnail: type === CardType.Trending ? trending.small : regular.small,
@@ -52,7 +51,6 @@ export function MediaCard(props: MediaCardProps) {
     },
   };
 
-  const Container = styled("div")
 
 
   const MediaCard = styled("div", {
@@ -64,6 +62,9 @@ export function MediaCard(props: MediaCardProps) {
     background: `url("${chooseParams[CardSize.Small].thumbnail}") center center / cover no-repeat`,
 
     "&:hover": {
+      ".trending-description": {
+        display: "none",
+      },
       ".playButton": {
         display: "block",
       },
@@ -89,6 +90,7 @@ export function MediaCard(props: MediaCardProps) {
     background:
       "linear-gradient(180deg, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.75) 100%)",
     padding: "16px",
+    animation: "fadeInUp .2s ease-in-out",
 
     "@tablet": {
       padding: "24px",
@@ -120,7 +122,7 @@ export function MediaCard(props: MediaCardProps) {
   });
 
   return (
-    <Container>
+    <>
       <MediaCard>
         <BookMark>
           <BookMarkButton defaultState={isBookmarked} />
@@ -129,7 +131,7 @@ export function MediaCard(props: MediaCardProps) {
           <PlayButton />
         </PlayButtonContainer>
         {type === CardType.Trending && (
-          <TrendingDescription>
+          <TrendingDescription className="trending-description">
             <MediaDescription media={media} type={type} />
           </TrendingDescription>
         )}
@@ -139,6 +141,6 @@ export function MediaCard(props: MediaCardProps) {
           <MediaDescription media={media} type={type} />
         </RegularDescription>
       )}
-    </Container>
+    </>
   );
 }
