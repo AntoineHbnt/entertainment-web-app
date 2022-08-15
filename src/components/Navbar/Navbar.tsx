@@ -96,7 +96,7 @@ export function Navbar(props: NavbarProps) {
       <Logo src="assets/logo.svg" />
       <Navigation>
         {navigation && navigation.map((item, index) => (
-          <Item href={item.link} className={index === 2 ? "active" : ""}>
+          <Item href={item.link} key={`navItem-${index}`} className={index === 2 ? "active" : ""}>
             {item.icon}
           </Item>
         ))}
