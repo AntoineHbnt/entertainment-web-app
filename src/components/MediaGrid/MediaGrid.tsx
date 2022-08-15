@@ -130,10 +130,10 @@ export function MediaGrid(props: MediaGridProps) {
     <Container>
       <Header>
         <Heading size={HeadingSize.Large} children={title}/>
-        <ButtonContainer>
+        {type === CardType.Trending && <ButtonContainer>
           <Button onClick={() => handleClick(Direction.Left)}>ᐸ</Button>
           <Button onClick={() => handleClick(Direction.Right)}>ᐳ</Button>
-        </ButtonContainer>
+        </ButtonContainer>}
       </Header>
       <Grid
         id={type === CardType.Trending ? "trending-grid" : ""}

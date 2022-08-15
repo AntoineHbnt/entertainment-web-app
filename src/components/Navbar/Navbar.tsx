@@ -1,5 +1,6 @@
 import * as React from "react";
 import { styled } from "stitches.config";
+import { ReactComponent as Logo } from "assets/logo.svg";
 
 export interface NavbarProps {
   navigation: {
@@ -70,16 +71,17 @@ export function Navbar(props: NavbarProps) {
     },
   });
 
-  const Logo = styled("img", {
-    width: "25px",
+  const LogoContainer = styled("div", {
+    transform: "scale(0.8)",
 
     "@tablet": {
-      width: "32px",
+      transform: "scale(1)",
     },
   });
 
   const Avatar = styled("img", {
     width: "24px",
+    aspectRatio: "1/1",
     border: "1px solid $pureWhite",
     borderRadius: "100%",
 
@@ -93,15 +95,22 @@ export function Navbar(props: NavbarProps) {
 
   return (
     <Container>
-      <Logo src="assets/logo.svg" />
+      <LogoContainer>
+        <Logo />
+      </LogoContainer>
       <Navigation>
-        {navigation && navigation.map((item, index) => (
-          <Item href={item.link} key={`navItem-${index}`} className={index === 2 ? "active" : ""}>
-            {item.icon}
-          </Item>
-        ))}
+        {navigation &&
+          navigation.map((item, index) => (
+            <Item
+              href={item.link}
+              key={`navItem-${index}`}
+              className={index === 2 ? "active" : ""}
+            >
+              {item.icon}
+            </Item>
+          ))}
       </Navigation>
-      <Avatar src="assets/image-avatar.png" />
+      <Avatar src="https://randomuser.me/api/portraits/men/3.jpg" />
     </Container>
   );
 }
