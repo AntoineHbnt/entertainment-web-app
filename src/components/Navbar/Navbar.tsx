@@ -1,8 +1,7 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
 import { styled } from "stitches.config";
 
-interface NavbarProps {
+export interface NavbarProps {
   navigation: {
     alt: string;
     icon: React.ReactNode;
@@ -96,7 +95,7 @@ export function Navbar(props: NavbarProps) {
     <Container>
       <Logo src="assets/logo.svg" />
       <Navigation>
-        {navigation.map((item, index) => (
+        {navigation && navigation.map((item, index) => (
           <Item href={item.link} className={index === 2 ? "active" : ""}>
             {item.icon}
           </Item>
