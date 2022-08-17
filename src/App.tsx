@@ -6,8 +6,29 @@ import { ReactComponent as HomeIcon } from "assets/icon-nav-home.svg";
 import { ReactComponent as MoviesIcon } from "assets/icon-nav-movies.svg";
 import { ReactComponent as BookmarkIcon } from "assets/icon-nav-bookmark.svg";
 import { ReactComponent as TvIcon } from "assets/icon-nav-tv-series.svg";
+import { Media } from "utils/dataTypes";
+import { Movies } from "pages/Movies/Movies";
+import { Series } from "pages/Series/Series";
+import { Bookmarked } from "pages/Bookmarked/Bookmarked";
+
+export interface PageProps {
+  data: Media[];
+}
 
 function App() {
+  const [data, setData] = React.useState<Media[]>([]);
+
+  const getData = async () => {
+    const res = await fetch("data.json", {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
+
+    setData([...(await res.json())]);
+  };
+
   const navigation = [
     { icon: <HomeIcon />, link: "", alt: "home" },
     { icon: <MoviesIcon />, link: "", alt: "movies" },
@@ -65,6 +86,13 @@ function App() {
     },
   });
 
+  React.useEffect(() => {
+    getData();
+  }, []);
+
+  
+
+
   return (
     <Container className="App">
       <Header>
@@ -72,7 +100,7 @@ function App() {
       </Header>
 
       <Content>
-        <Home />
+        {data && <Bookmarked data={data}/>}
       </Content>
     </Container>
   );
