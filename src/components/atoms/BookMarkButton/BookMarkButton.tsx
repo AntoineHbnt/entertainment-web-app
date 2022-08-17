@@ -37,7 +37,7 @@ export function BookMarkButton(props: BookMarkButtonProps) {
 
 
   return (
-    <Button onClick={(e) => onClick && onClick(e)}>
+    <Button onClick={(e) => onClick && onClick(e)} aria-label="bookmark">
       {state ? (
         <BookMarkIcon className="full" />
       ) : (
