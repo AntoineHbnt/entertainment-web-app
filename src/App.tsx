@@ -74,11 +74,10 @@ function App() {
     flexGrow: 1,
 
     "@tablet": {
-      padding: "32px 0",
+      padding: "32px",
     },
 
     "@smallScreen": {
-      padding: "0 32px",
       width: "calc(100% - 64px)",
     },
   });
