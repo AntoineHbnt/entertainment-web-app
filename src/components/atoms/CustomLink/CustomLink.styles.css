@@ -1,0 +1,21 @@
+.customLink {
+  display: "flex";
+  align-items: "center";
+  transform: scale(0.8);
+}
+
+@media screen and (min-width: 481px) {
+  .customLink {
+    transform: scale(1);
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .customLink:hover>svg>path {
+    fill: #FC4747;
+  }
+}
+
+.customLink.active > svg > path {
+  fill: #FFF;
+}

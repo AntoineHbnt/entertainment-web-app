@@ -1,6 +1,8 @@
 import * as React from "react";
 import { styled } from "stitches.config";
 import { ReactComponent as Logo } from "assets/logo.svg";
+import { Link as NavLink } from "react-router-dom";
+import { CustomLink } from "components/atoms/CustomLink/CustomLink";
 
 export interface NavbarProps {
   navigation: {
@@ -52,25 +54,6 @@ export function Navbar(props: NavbarProps) {
     },
   });
 
-  const Item = styled("a", {
-    display: "flex",
-    alignItems: "center",
-    transform: "scale(0.8)",
-
-    "&.active > svg > path": {
-      fill: "$pureWhite",
-    },
-
-    "@tablet": {
-      transform: "scale(1)",
-    },
-    "@smallScreen": {
-      "&:hover > svg > path": {
-        fill: "$red",
-      },
-    },
-  });
-
   const LogoContainer = styled("div", {
     transform: "scale(0.8)",
 
@@ -101,13 +84,9 @@ export function Navbar(props: NavbarProps) {
       <Navigation>
         {navigation &&
           navigation.map((item, index) => (
-            <Item
-              href={item.link}
-              key={`navItem-${index}`}
-              className={index === 2 ? "active" : ""}
-            >
+            <CustomLink key={`navLink-${index}`} to={item.link}>
               {item.icon}
-            </Item>
+            </CustomLink>
           ))}
       </Navigation>
       <Avatar src="https://randomuser.me/api/portraits/men/3.jpg" />
