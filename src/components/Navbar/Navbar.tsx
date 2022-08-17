@@ -1,7 +1,6 @@
 import * as React from "react";
 import { styled } from "stitches.config";
 import { ReactComponent as Logo } from "assets/logo.svg";
-import { Link as NavLink } from "react-router-dom";
 import { CustomLink } from "components/atoms/CustomLink/CustomLink";
 
 export interface NavbarProps {
