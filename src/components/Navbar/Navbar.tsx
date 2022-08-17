@@ -15,6 +15,7 @@ export function Navbar(props: NavbarProps) {
   const { navigation } = props;
 
   const Container = styled("div", {
+    position: "relative",
     width: "100%",
     height: "56px",
     display: "flex",
@@ -31,6 +32,8 @@ export function Navbar(props: NavbarProps) {
 
     "@smallScreen": {
       flexDirection: "column",
+      justifyContent: "start",
+      gap: "75px",
       height: "100%",
       width: "fit-content",
       borderRadius: "20px",
@@ -71,6 +74,8 @@ export function Navbar(props: NavbarProps) {
       width: "32px",
     },
     "@smallScreen": {
+      position: "absolute",
+      bottom: "32px",
       width: "40px",
     },
   });
