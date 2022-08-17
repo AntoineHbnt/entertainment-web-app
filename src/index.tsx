@@ -3,7 +3,11 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+
 import { styled } from "stitches.config";
+import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import { store } from "app/store";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -21,9 +25,13 @@ const Container = styled("div", {
 
 root.render(
   <React.StrictMode>
-    <Container>
-      <App />
-    </Container>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Container>
+          <App />
+        </Container>
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );
 

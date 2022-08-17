@@ -1,6 +1,8 @@
 import { BookMarkButton } from "components/atoms/BookMarkButton/BookMarkButton";
 import { MediaDescription } from "components/atoms/MediaDescription/MediaDescription";
 import { PlayButton } from "components/atoms/PlayButton/PlayButton";
+import { toggleBookmark } from "features/media/mediaSlice";
+import { useDispatch } from "react-redux";
 import { styled } from "stitches.config";
 import { defaultMedia, Media } from "utils/dataTypes";
 
@@ -27,11 +29,16 @@ export function MediaCard(props: MediaCardProps) {
   } = props;
   const { isBookmarked, thumbnail } = media;
   const { trending, regular } = thumbnail;
+  const dispatch = useDispatch()<any>;
 
   const chooseType = {
     [CardType.Trending]: "trending",
     [CardType.Regular]: "regular",
   };
+
+  const handleClick = (event: React.MouseEvent) => {
+    dispatch(toggleBookmark(media))
+  }
 
 
   const chooseParams = {
@@ -123,7 +130,7 @@ export function MediaCard(props: MediaCardProps) {
     <Container>
       <MediaCard>
         <BookMark>
-          <BookMarkButton defaultState={isBookmarked} />
+          <BookMarkButton defaultState={isBookmarked} onClick={handleClick}/>
         </BookMark>
         <PlayButtonContainer className="playButton">
           <PlayButton />
