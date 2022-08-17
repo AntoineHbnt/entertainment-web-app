@@ -3,16 +3,16 @@ import { Media } from "utils/dataTypes";
 import SearchBar from "components/SearchBar/SearchBar";
 import { MediaGrid } from "components/MediaGrid/MediaGrid";
 import { CardType } from "components/MediaCard/MediaCard";
-import { PageProps } from "App";
+import { useSelector } from "react-redux";
+import { RootState } from "app/store";
 
-
-export function Home(props: PageProps) {
+export function Home() {
   const [searchTerm, setSearchTerm] = React.useState("");
   const [filterData, setFilterData] = React.useState<Media[]>([]);
   const [trending, setTrending] = React.useState<Media[]>([]);
   const [recommended, setRecommanded] = React.useState<Media[]>([]);
 
-  const {data} = props;
+  const data = useSelector((state: RootState) => state.media.list);
 
   const searchData = (term: string) => {
     const filteredData = data.filter((item) =>
@@ -42,23 +42,23 @@ export function Home(props: PageProps) {
         value={searchTerm}
       />
       {searchTerm ? (
-        <MediaGrid
+        filterData.length > 0 && <MediaGrid
           title={`Found ${filterData.length} results for '${searchTerm}'`}
           type={CardType.Regular}
           mediaArray={filterData}
         />
       ) : (
         <>
-          <MediaGrid
+          {trending.length > 0 && <MediaGrid
             title="Trending"
             type={CardType.Trending}
             mediaArray={trending}
-          />
-          <MediaGrid
+          />}
+          {recommended.length > 0 && <MediaGrid
             title="Recommended for you"
             type={CardType.Regular}
             mediaArray={recommended}
-          />
+          />}
         </>
       )}
     </>

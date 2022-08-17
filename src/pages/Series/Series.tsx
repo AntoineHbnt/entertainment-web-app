@@ -1,13 +1,14 @@
 import * as React from "react";
 
-import { PageProps } from "App";
 import { CardType } from "components/MediaCard/MediaCard";
 import { MediaGrid } from "components/MediaGrid/MediaGrid";
 import SearchBar from "components/SearchBar/SearchBar";
 import { Media } from "utils/dataTypes";
+import { useSelector } from "react-redux";
+import { RootState } from "app/store";
 
-export function Series(props: PageProps) {
-    const { data } = props;
+export function Series() {
+  const data = useSelector((state: RootState) => state.media.list);
 
   const [searchTerm, setSearchTerm] = React.useState("");
   const [filterData, setFilterData] = React.useState<Media[]>([]);

@@ -3,16 +3,17 @@ import { Media } from "utils/dataTypes";
 import SearchBar from "components/SearchBar/SearchBar";
 import { MediaGrid } from "components/MediaGrid/MediaGrid";
 import { CardType } from "components/MediaCard/MediaCard";
-import { PageProps } from "App";
+import { useSelector } from "react-redux";
+import { RootState } from "app/store";
 
-export function Bookmarked(props: PageProps) {
+export function Bookmarked() {
   const [searchTerm, setSearchTerm] = React.useState("");
   const [filterData, setFilterData] = React.useState<Media[]>([]);
   const [bookmarked, setBookmarked] = React.useState<Media[]>([]);
   const [movies, setMovies] = React.useState<Media[]>([]);
   const [series, setSeries] = React.useState<Media[]>([]);
 
-  const { data } = props;
+  const data = useSelector((state: RootState) => state.media.list);
 
   const searchData = (term: string) => {
     const filteredData = bookmarked.filter((item) =>

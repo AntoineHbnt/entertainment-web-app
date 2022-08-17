@@ -6,13 +6,12 @@ import reportWebVitals from "./reportWebVitals";
 
 import { styled } from "stitches.config";
 import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import { store } from "app/store";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
-
-
-
 
 const Container = styled("div", {
   display: "flex",
@@ -24,15 +23,15 @@ const Container = styled("div", {
   background: "$darkBlue",
 });
 
-
-
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Container>
-        <App/>
-      </Container>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Container>
+          <App />
+        </Container>
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );
 

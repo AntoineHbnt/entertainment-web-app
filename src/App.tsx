@@ -11,25 +11,17 @@ import { ReactComponent as MoviesIcon } from "assets/icon-nav-movies.svg";
 import { ReactComponent as BookmarkIcon } from "assets/icon-nav-bookmark.svg";
 import { ReactComponent as TvIcon } from "assets/icon-nav-tv-series.svg";
 import { styled } from "stitches.config";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { RootState } from "app/store";
+import { fetchData } from "features/media/mediaSlice";
 
 
-export interface PageProps {
-  data: Media[];
-}
 
 function App() {
-  const [data, setData] = React.useState<Media[]>([]);
+  const dispatch = useDispatch()<any>;
+  const data = useSelector((state: RootState) => state.media).list;
 
-  const getData = async () => {
-    const res = await fetch("data.json", {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    });
-
-    setData([...(await res.json())]);
-  }
   const navigation = [
     { icon: <HomeIcon />, link: "/", alt: "home" },
     { icon: <MoviesIcon />, link: "/movies", alt: "movies" },
@@ -38,8 +30,8 @@ function App() {
   ];
 
   React.useEffect(() => {
-    getData();
-  }, []);
+    dispatch(fetchData())
+  }, [dispatch]);
 
   const Wrapper = styled("div", {
     display: "flex",
@@ -99,10 +91,10 @@ function App() {
 
       <Content>
         <Routes>
-          <Route index element={<Home data={data} />} />
-          <Route path="movies" element={<Movies data={data} />} />
-          <Route path="series" element={<Series data={data} />} />
-          <Route path="bookmarked" element={<Bookmarked data={data} />} />
+          <Route index element={<Home  />} />
+          <Route path="movies" element={<Movies  />} />
+          <Route path="series" element={<Series  />} />
+          <Route path="bookmarked" element={<Bookmarked  />} />
         </Routes>
       </Content>
     </Wrapper>
