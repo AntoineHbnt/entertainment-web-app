@@ -13,6 +13,13 @@ const Container = styled("div", {
   alignItems: "center",
   gap: "16px",
   height: "48px",
+
+  "& > svg": {
+    transform: "scale(0.75)",
+    "@tablet": {
+      transform: "scale(1)",
+    }
+  }
 });
 
 const Input = styled("input", {
@@ -29,6 +36,10 @@ const Input = styled("input", {
     marginBottom: "-1px",
     borderBottom: "1px solid $greyishBlue",
   },
+
+  "@tablet": {
+    fontSize: "1.5rem",
+  },
 });
 
 function SearchBar(props: SearchBarProps) {
@@ -36,7 +47,7 @@ function SearchBar(props: SearchBarProps) {
 
   return (
     <Container>
-      <SearchIcon style={{ transform: "scale(0.75)" }} />
+      <SearchIcon/>
       <Input
         placeholder={placeholder}
         value={value}

@@ -136,7 +136,7 @@ export function MediaGrid(props: MediaGridProps) {
         </ButtonContainer>}
       </Header>
       <Grid
-        id={type === CardType.Trending ? "trending-grid" : ""}
+        id={type === CardType.Trending ? "trending-grid" : "regular-grid"}
         className={chooseType[type]}
       >
         {mediaArray.map((media, index) => (

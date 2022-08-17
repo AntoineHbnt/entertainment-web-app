@@ -93,7 +93,7 @@ export function Navbar(props: NavbarProps) {
             </CustomLink>
           ))}
       </Navigation>
-      <Avatar src="https://randomuser.me/api/portraits/men/3.jpg" />
+      <Avatar src="https://randomuser.me/api/portraits/men/3.jpg" alt="avatar"/>
     </Container>
   );
 }
