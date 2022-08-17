@@ -140,7 +140,7 @@ export function MediaGrid(props: MediaGridProps) {
         className={chooseType[type]}
       >
         {mediaArray.map((media, index) => (
-          <MediaCard media={media} type={type} />
+          <MediaCard key={`card-${index}`} media={media} type={type} />
         ))}
       </Grid>
     </Container>

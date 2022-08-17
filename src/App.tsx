@@ -47,6 +47,10 @@ function App() {
   });
 
   const Content = styled("div", {
+    display: "flex",
+    flexDirection: "column",
+    gap: "24px",
+    minHeight: "100vh",
     padding: "16px",
     boxSizing: "border-box",
     flexGrow: 1,

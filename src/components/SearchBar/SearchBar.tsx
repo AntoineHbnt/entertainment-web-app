@@ -4,7 +4,8 @@ import { styled } from "stitches.config";
 
 export interface SearchBarProps {
   placeholder?: string;
-  onChange?: (event: React.ChangeEvent) => void;
+  value?: string;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Container = styled("div", {
@@ -31,13 +32,14 @@ const Input = styled("input", {
 });
 
 function SearchBar(props: SearchBarProps) {
-  const { placeholder = "Search", onChange } = props;
+  const { placeholder = "Search", value = "", onChange } = props;
 
   return (
     <Container>
       <SearchIcon style={{ transform: "scale(0.75)" }} />
       <Input
         placeholder={placeholder}
+        value={value}
         onChange={(event) => onChange && onChange(event)}
       />
     </Container>
