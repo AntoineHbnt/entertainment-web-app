@@ -70,12 +70,7 @@ export function MediaCard(props: MediaCardProps) {
     overflow: "hidden",
     background: `url("${chooseParams[CardSize.Small].thumbnail}") center center / cover no-repeat`,
 
-    "&:hover": {
-      ".playButton": {
-        display: "block",
-      },
-    },
-
+    
     "@tablet": {
       width: type === CardType.Trending ? `$trendingCardWidthLarge` : `$regularCardWidth`,
       height: type === CardType.Trending ? `$trendingCardHeightLarge` : `$regularCardHeightMedium`,
@@ -85,6 +80,11 @@ export function MediaCard(props: MediaCardProps) {
       width: type === CardType.Trending ? `$trendingCardWidthLarge` : `$regularCardWidth`,
       height: type === CardType.Trending ? `$trendingCardHeightLarge` : `$regularCardHeightLarge`,
       background: `url("${chooseParams[CardSize.Large].thumbnail}") center center / cover no-repeat`,
+      "&:hover": {
+        ".playButton": {
+          display: "block",
+        },
+      },
     }
 
   });
